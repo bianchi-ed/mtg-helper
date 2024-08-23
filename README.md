@@ -1,4 +1,4 @@
-# MTG Discord Bot
+# MTG Helper
 
 ## Introduction
 
