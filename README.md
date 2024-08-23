@@ -1,10 +1,6 @@
 # MTG Helper
 
-## Introduction
-
 MTG Helper is a Discord bot built with Node.js and uses the `discord.js` v14 library, along with `axios` and `cheerio` to fetch and compile Magic: The Gathering information from various sources into the Discord environment.
-
-The bot is designed to enhance the MTG experience by providing card information, tournament results, top archetypes, and more directly within your Discord server.
 
 ## Scryfall
 
