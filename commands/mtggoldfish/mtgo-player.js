@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('mtgo-player')
-        .setDescription('Search for a Magic: The Gathering Online player.')
+        .setDescription('Search for a Magic: The Gathering Online player recent events.')
         .addStringOption(option =>
             option
                 .setName('nickname')
