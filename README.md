@@ -2,6 +2,40 @@
 
 MTG Helper is a Discord bot built with Node.js and uses the `discord.js` v14 library, along with `axios` and `cheerio` to fetch and compile Magic: The Gathering information from various sources into the Discord environment.
 
+## Hypergeometric Calculator
+
+<details>
+<summary>/calculator</summary>
+
+### Description 
+
+This command calculates the probability of drawing specific cards in a game of Magic: The Gathering using the hypergeometric distribution. It provides the chances of drawing a specified number of wanted cards from your deck.
+
+### Parameters
+`population_size <Integer>` -> The total number of cards in your deck/library from which you are drawing.
+
+`sample_size <Integer>` -> The number of cards you are drawing, such as the number of cards in your opening hand.
+
+`successes_in_population <Integer>` -> The number of specific cards you want from your deck/library.
+
+`successes_in_sample <Integer>` -> The exact number of the wanted cards you want to draw.
+
+### Raw SlashCommand Input Example
+
+```shell
+/calculator population_size:60 sample_size:7 successes_in_population:4 successes_in_sample:2
+```
+
+### Discord Input Example
+
+![hypcalcin](https://github.com/user-attachments/assets/f222d1a9-6fc8-47a5-abb4-8e0696a31a3c)
+
+### Output Example
+
+![hypcalcout](https://github.com/user-attachments/assets/71f73f1d-dfc1-4ba8-a2e0-7cb822d3c7a0)
+
+</details>
+
 ## Scryfall
 
 The commands in this section fetch information from the Scryfall API, a comprehensive database of Magic: The Gathering cards.
