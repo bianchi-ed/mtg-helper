@@ -61,7 +61,7 @@ module.exports = {
             .setTitle('Hypergeometric Calculator')
             .addFields(
                 { name: 'Input', value: `\n----\nPopulation Size (Cards in your deck/library you are drawing from): **${N}**\nSample Size (Number of cards you are drawing, e.g., cards in opening hand): **${n}**\nSuccesses in Population (Number of cards you want that is in the deck/library): **${K}**\nSuccesses in Sample (Number of wanted cards you want to draw): **${k}**`, inline: false },
-                { name: 'Results', value: `\n----\nChance to draw 1 or more of the wanted card: **${atLeastK.toFixed(2)}%**\nChance to draw exactly 1 of the wanted card: **${exactK.toFixed(2)}%**\nChance to draw 1 or less of the wanted card: **${atMostK.toFixed(2)}%**\nChance to draw 0 of the wanted card: **${zeroK.toFixed(2)}%**`, inline: false }
+                { name: 'Results', value: `\n----\nChance to draw ${k} or more of the wanted card: **${atLeastK.toFixed(2)}%**\nChance to draw exactly ${k} of the wanted card: **${exactK.toFixed(2)}%**\nChance to draw ${k} or less of the wanted card: **${atMostK.toFixed(2)}%**\nChance to draw 0 of the wanted card: **${zeroK.toFixed(2)}%**`, inline: false }
             );
 
         await interaction.reply({ embeds: [embed] });
