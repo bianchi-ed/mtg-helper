@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('mtggoldfish-articles')
-        .setDescription('Fetch recent articles from MTGGoldfish'),
+        .setDescription('Fetch random articles from MTGGoldfish'),
 
     async execute(interaction) {
         const url = 'https://www.mtggoldfish.com/articles';
@@ -48,7 +48,16 @@ module.exports = {
                 }
             });
 
-            // Limit to the first 3 articles
+            // Function to shuffle the array
+            const shuffleArray = (array) => {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            };
+
+            // Shuffle articles and select the first 3
+            shuffleArray(articles);
             const limitedArticles = articles.slice(0, 3);
 
             // Create embed for each article
@@ -65,7 +74,7 @@ module.exports = {
             );
 
             // Add message link to all articles
-            const allArticlesMessage = `\n\nShowing the last 3 articles from MTGGoldFish.\n\n`;
+            const allArticlesMessage = `\n\nShowing 3 random recent articles from MTGGoldFish.\n\n`;
 
             // Send embeds and message
             if (embeds.length > 0) {
