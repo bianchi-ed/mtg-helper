@@ -49,7 +49,7 @@ Search for a Magic: The Gathering card by name.
 
 ### Parameters
 
-`name` -> The name of the Magic: The Gathering card.
+`name <String>` -> The name of the Magic: The Gathering card.
 
 ### Raw SlashCommand Input Example
 
@@ -76,7 +76,7 @@ Search for a Magic: The Gathering card information (Text Only).
 
 ### Parameters
 
-`name` -> The name of the Magic: The Gathering card.
+`name <String>` -> The name of the Magic: The Gathering card.
 
 ### Raw SlashCommand Input Example 
 
@@ -103,7 +103,7 @@ Fetches the full art of a Magic: The Gathering card.
 
 ### Parameters
 
-`name` -> The name of the Magic: The Gathering card.
+`name <String>` -> The name of the Magic: The Gathering card.
 
 ### Raw SlashCommand Input Example 
 
@@ -130,7 +130,7 @@ Retrieves the flavor text of a Magic: The Gathering card.
 
 ### Parameters
 
-`name` -> The name of the Magic: The Gathering card.
+`name <String>` -> The name of the Magic: The Gathering card.
 
 ### Raw SlashCommand Input Example 
 
@@ -157,7 +157,7 @@ Retrieves the legality of a Magic: The Gathering card in various formats.
 
 ### Parameters
 
-`name` -> The name of the Magic: The Gathering card.
+`name <String>` -> The name of the Magic: The Gathering card.
 
 ### Raw SlashCommand Input Example 
 
@@ -184,7 +184,7 @@ Retrieves the legality of a Magic: The Gathering card in various formats, displa
 
 ### Parameters
 
-`name` -> The name of the Magic: The Gathering card.
+`name <String>` -> The name of the Magic: The Gathering card.
 
 ### Raw SlashCommand Input Example 
 
@@ -216,12 +216,12 @@ Retrieves recent Magic: The Gathering Online events for a specified player.
 
 ### Parameters
 
-`nickname` -> The MTGO nickname of the player whose events you want to retrieve.
+`nickname <String>` -> The MTGO nickname of the player whose events you want to retrieve.
 
 ### Raw SlashCommand Input Example 
 
 ```shell
-/mtgo-player nickname: lsv
+/mtgo-player nickname:lsv
 ```
 
 ### Discord Input Example 
@@ -244,7 +244,7 @@ Fetches recent tournament data for a specified Magic: The Gathering format from 
 
 ### Parameters
 
-`format` -> The MTG format to fetch data for. Options include Modern, Pioneer, Pauper, Standard, Legacy, and Vintage.
+`format <StringChoice>` -> The MTG format to fetch data for. Options include Modern, Pioneer, Pauper, Standard, Legacy, and Vintage.
 
 ### Raw SlashCommand Input Example 
 
@@ -273,7 +273,7 @@ Retrieves the top 20 metagame archetypes for a specified Magic: The Gathering fo
 
 ### Parameters
 
-`format` -> The MTG format to fetch archetypes for. Options include Modern, Pioneer, Pauper, Standard, Legacy, and Vintage.
+`format <StringChoice>` -> The MTG format to fetch archetypes for. Options include Modern, Pioneer, Pauper, Standard, Legacy, and Vintage.
 
 ### Raw SlashCommand Input Example
 
