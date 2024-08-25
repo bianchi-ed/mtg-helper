@@ -257,3 +257,26 @@ Retrieves the top 20 metagame archetypes for a specified Magic: The Gathering fo
 
 
 </details>
+
+<details>
+<summary>/mtggoldfish-articles </summary>
+ 
+### Description 
+
+Retrieves random 3 recent articles from MTGGoldfish.
+
+### Raw SlashCommand Input Example
+
+```shell
+/mtggoldfish-articles 
+```
+
+### Discord Input Example
+
+![Captura de tela 2024-08-25 100211](https://github.com/user-attachments/assets/5981944b-64fb-4ffa-8043-f5f739a8c880)
+
+### Output Example
+
+![articles out](https://github.com/user-attachments/assets/54f2ae32-0c73-4467-95de-f5d86e5c5a6e)
+
+</details>
