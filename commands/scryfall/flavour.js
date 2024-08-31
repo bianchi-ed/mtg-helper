@@ -14,19 +14,33 @@ module.exports = {
 
     async execute(interaction) {
         const cardName = interaction.options.getString('name');
-        // Update the API URL with the new endpoint
         const apiUrl = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(cardName)}`;
 
         try {
-            // Fetch data from the API
+            await interaction.deferReply(); // Defer the initial reply
+
+            //API call
             const response = await axios.get(apiUrl);
             const data = response.data;
 
-            // Check if the card was found
-            if (data) {
+            if (data.card_faces && data.card_faces.length > 0) {
+                // Double-faced card
+                for (const face of data.card_faces) {
+                    const flavorText = face.flavor_text || 'No flavor text available for this face.';
+                    
+                    const embed = new EmbedBuilder()
+                        .setColor(0x2e2d2d)
+                        .setTitle(`${face.name}`)
+                        .setThumbnail(face.image_uris.art_crop)
+                        .setDescription(flavorText)
+                        .setFooter({ text: 'Source: Scryfall' });
+                    
+                    await interaction.followUp({ embeds: [embed] });
+                }
+            } else {
+                // Single-faced card
                 const flavorText = data.flavor_text || 'No flavor text available for this card.';
-
-                // Create the embed
+                
                 const embed = new EmbedBuilder()
                     .setColor(0x2e2d2d)
                     .setTitle(`${data.name}`)
@@ -34,15 +48,11 @@ module.exports = {
                     .setDescription(flavorText)
                     .setFooter({ text: 'Source: Scryfall' });
 
-                // Send the embed
-                await interaction.reply({ embeds: [embed] });
-
-            } else {
-                await interaction.reply('No card found matching your query.');
+                await interaction.followUp({ embeds: [embed] });
             }
         } catch (error) {
             console.error('Error fetching data from Scryfall API:', error);
-            await interaction.reply('There was an error fetching card flavor text.');
+            await interaction.followUp('There was an error fetching card flavor text.');
         }
     },
 };

@@ -14,7 +14,6 @@ module.exports = {
 
     async execute(interaction) {
         const cardName = interaction.options.getString('name');
-        // Update the API URL with the new endpoint
         const apiUrl = `https://api.scryfall.com/cards/named?fuzzy=${encodeURIComponent(cardName)}`;
 
         try {
@@ -22,9 +21,25 @@ module.exports = {
             const response = await axios.get(apiUrl);
             const data = response.data;
 
-            // Check if the card was found
-            if (data) {
-                // Construct the text message conditionally
+            // Check if the card has multiple faces
+            if (data.card_faces && data.card_faces.length > 0) {
+                // Construct the message for each face of the card
+                const faceMessages = data.card_faces.map((face, index) => {
+                    return [
+                        `**Face ${index + 1}: ${face.name}**`,
+                        face.mana_cost ? `Mana Cost: ${face.mana_cost}` : null,
+                        face.type_line ? `Type: ${face.type_line}` : null,
+                        (face.power && face.toughness) ? `Power/Toughness: ${face.power}/${face.toughness}` : null,
+                        face.loyalty && face.loyalty !== 'N/A' ? `Loyalty: ${face.loyalty}` : null,
+                        face.oracle_text ? `Text:\n${face.oracle_text}` : null
+                    ]
+                    .filter(Boolean)
+                    .join('\n');
+                }).join('\n\n'); // Separate each face's message with a double line break
+
+                await interaction.reply(faceMessages);
+            } else {
+                // Single-faced card handling
                 const message = [
                     `Card Name: ${data.name}`,
                     data.mana_cost ? `Mana Cost: ${data.mana_cost}` : null,
@@ -34,14 +49,10 @@ module.exports = {
                     data.loyalty && data.loyalty !== 'N/A' ? `Loyalty: ${data.loyalty}` : null,
                     data.oracle_text ? `Text:\n${data.oracle_text}` : null
                 ]
-                .filter(Boolean) // Remove null or undefined entries
+                .filter(Boolean)
                 .join('\n');
 
-                // Send the text message
                 await interaction.reply(message);
-
-            } else {
-                await interaction.reply('No card found matching your query.');
             }
         } catch (error) {
             console.error('Error fetching data from Scryfall API:', error);
