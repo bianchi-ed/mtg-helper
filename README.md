@@ -6,7 +6,6 @@ MTG Helper is a Discord bot built with Node.js and uses the `discord.js` v14 lib
 
 A hypergeometric calculator is a tool used to calculate probabilities in scenarios where you are drawing samples from a finite population without replacement. It helps determine the likelihood of specific outcomes based on the number of successes and failures in the population.
 
-For example, in a deck of cards, it can calculate the probability of drawing a certain number of desired cards (successes) when drawing a set number of cards from the deck. The hypergeometric distribution is particularly useful in scenarios like card games, lottery draws, and quality control where items are not replaced after selection.
 <details>
 <summary>/calculator</summary>
 
