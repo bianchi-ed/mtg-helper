@@ -124,7 +124,7 @@ Fetches the full art of a Magic: The Gathering card.
 </details>
 
 <details>
-<summary>/flavour</summary>
+<summary>/flavor</summary>
  
 ### Description 
 
